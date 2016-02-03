@@ -1,0 +1,218 @@
+﻿
+@model IEnumerable<TermProject.Models.AdItem>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";    
+    ViewBag.Title = "LAM";
+}
+<html>
+    <head>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Scripts/bootstrap.js"></script>
+        @*<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">*@
+        @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>*@
+        <script src="~/Scripts/jquery.min.js"></script>
+        @*<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>*@
+        <script src="~/Scripts/bootstrap.min.js"></script>
+    
+        <title>Admin Panel</title>
+
+        <script>
+            $("#menu-toggle").click(function (e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+    </script>
+        <style>
+            html, body {
+                background-image: url('/Images/1.jpg');
+                }
+            #wrapper {
+                padding-left: 0;
+                -webkit-transition: all 0.5s ease;
+                -moz-transition: all 0.5s ease;
+                -o-transition: all 0.5s ease;
+                transition: all 0.5s ease;
+            }
+
+            #wrapper.toggled {
+                padding-left: 250px;
+            }
+
+            #sidebar-wrapper {
+                z-index: 1000;
+                position: fixed;
+                left: 250px;
+                width: 0;
+                height: 80%;
+                margin-left: -250px;
+                overflow-y: auto;
+                background:#000;
+                -webkit-transition: all 0.5s ease;
+                -moz-transition: all 0.5s ease;
+                -o-transition: all 0.5s ease;
+                transition: all 0.5s ease;
+            }
+
+            #wrapper.toggled #sidebar-wrapper {
+                width: 250px;
+            }
+
+            #page-content-wrapper {
+                width: 100%;
+                position: absolute;
+                padding: 15px;
+            }
+
+            #wrapper.toggled #page-content-wrapper {
+                position: absolute;
+                margin-right: -250px;
+            }
+
+            /* Sidebar Styles */
+
+            .sidebar-nav {
+                position: absolute;
+                top: 0;
+                width: 250px;
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+
+            .sidebar-nav li {
+                text-indent: 20px;
+                line-height: 40px;
+            }
+
+            .sidebar-nav li a {
+                display: block;
+                text-decoration: none;
+                color: #999999;
+            }
+
+            .sidebar-nav li a:hover {
+                text-decoration: none;
+                color: #fff;
+                background: rgba(255,255,255,0.2);
+            }
+
+            .sidebar-nav li a:active,
+            .sidebar-nav li a:focus {
+                text-decoration: none;
+            }
+
+            .sidebar-nav > .sidebar-brand {
+                height: 65px;
+                font-size: 18px;
+                line-height: 60px;
+            }
+
+            .sidebar-nav > .sidebar-brand a {
+                color: #999999;
+            }
+
+            .sidebar-nav > .sidebar-brand a:hover {
+                color: #fff;
+                background: none;
+            }
+
+        #wrapper.toggled {
+            padding-left: 0;
+        }
+
+        #sidebar-wrapper {
+            width: 250px;
+        }
+
+        #wrapper.toggled #sidebar-wrapper {
+            width: 0;
+        }
+
+        #page-content-wrapper {
+            padding: 20px;
+            position: relative;
+        }
+
+        #wrapper.toggled #page-content-wrapper {
+            position: relative;
+            margin-right: 0;
+        }
+        </style>
+    </head>
+    
+<body>
+    
+    <div id="wrapper col-md-3" >
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="~/Admin/Index">
+                        Admin Panel
+                    </a>
+                </li>
+                <li>
+                    <a href="#">Add Users</a>
+                </li>
+                <li>
+                    <a href="~/Admin/ViewUsers">View Users</a>
+                </li>
+                <li>
+                    <a href="~/Admin/ViewAds">View Ads</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    <center> <h2>Welcome to Admin panel</h2>
+        <div>
+        <center><h2 style="color:darkmagenta"> Posted ADs </h2></center><br /><br />
+        <div class="container">
+            <div class="col-sm-8" style="margin-left:20%">
+                <table class="table" >
+                    <thead>
+                                <tr class="info">
+                                    <th>AD Title</th>
+                                    <th>Category</th>
+                                    <th>Description</th>
+                                    <th>Name</th>
+                                    <th>User Id</th>
+                                    <th>Phone</th>
+                                    <th>Price</th>
+                                    <th>Address</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            
+                        @foreach (var viewUser in Model)
+                        {                     
+                            <tbody>
+                                <tr class="active">
+                                    <td>@viewUser.AdTitle</td>
+                                    <td>@viewUser.Category</td>
+                                    <td>@viewUser.Description</td>
+                                    <td>@viewUser.Name</td>
+                                    <td>@viewUser.UId</td>
+                                    <td>@viewUser.Phone</td>
+                                    <td>@viewUser.Price</td>
+                                    <td>@viewUser.Address</td>
+                                    @*<td><a href="/Admin/DeleteAd/@viewUser.Id">Delete</a></td>*@
+                                    <td><a href="/Admin/DeleteAd/@viewUser.Id" class="btn btn-warning" role="button">Delete Ad</a></td>
+                                </tr>
+                            </tbody>
+                        }
+
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+    </html>

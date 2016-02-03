@@ -1,0 +1,169 @@
+﻿@model TermProject.Models.user
+
+@{
+    Layout = "~/Views/Shared/UserIndex.cshtml";
+    ViewBag.Title = "LAM";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.intellisense.js"></script>
+    <script src="~/Scripts/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <script>
+        //$(document).ready(function () {
+        //    $("#submit").click(function (e) {
+        //        //e.preventDefault();
+        //        if ($("#adtitle").val() == "")        
+        //            alert("Enter title");
+        //        //    $(this).after('<span="invalid-error">This field is required.</span>');
+        //        //// add span after input
+        //        else if ($("#mycategory").val() == "")
+        //            alert("Enter Valid category");
+        //        else if ($("#adname").val() == "")
+        //            alert("Enter Name");
+        //        else if ($("#phone").val() == "")
+        //            alert("Phone Field is Empty");
+        //        else if ($("#price").val() == "")
+        //            alert("Price Field is empty");
+        //        else if ($("#address").val() == "")
+        //            alert("Address Field is empty ");
+        //    });
+        //});
+
+            </script>
+
+    <title></title>
+    <style>
+        html, body {
+            background-image: url('/Images/1.jpg');
+        }
+
+        .heading {
+            padding-top: 100px;
+            margin-left: 25%;
+            color: ButtonText;
+        }
+
+        .form-horizontal {
+            padding-top: 30px;
+            margin-left: 15%;
+        }
+        .mydropdown {
+            top: 0;
+            margin-left: 8%;
+            margin-top: -1px;
+        }
+        .myUpload {
+            margin-left: 17%;
+        }
+
+        .btn btn-info {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="heading">Submit an Ad</h1>
+    <form class="form-horizontal" role="form" method="post" action="/AD/submitAd" enctype="multipart/form-data">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="adTitle">Ad Title* :</label>
+            <div class="col-sm-6">
+                <input id="adtitle" type="text" class="form-control" name="adTitle" placeholder="Enter Title" required="required">
+            </div>
+        </div>
+        <!--Category View-->
+        <div class="mydropdown">
+            <label><b>category*: &nbsp&nbsp&nbsp&nbsp</b></label>
+            <select name="category" id="category" required="required">
+                <option value="0">Select Category</option>
+                <option value="Electronics">Electronics</option>
+                <option value="Mobile">Mobile</option>
+                <option value="Cars">Cars</option>
+                <option value="Bikes">Bikes</option>
+                <option value="Fashion">Fashion</option>
+                <option value="Sports">Sports</option>
+                <option value="Education">Education</option>
+            </select>
+        </div>
+        <!--Category View -->
+        <br />
+        <label class="control-label col-sm-2" for="adDes">Ad Description* : </label>
+        <textarea class="input-xxlarge" name="description" rows="8" cols="70" id="description" required="required" placeholder="Detail Description about the prodcut e.g. condition , brand etc."></textarea><br />
+        <br />
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="Name">Name* :</label>
+            <div class="col-sm-6">
+                <input id="adname" type="text" class="form-control" name="adname" placeholder="Enter name" required="required">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="Phone">Phone* : </label>
+            <div class="col-sm-6">
+                <input id="phone" type="number" class="form-control" name="adphone" placeholder="Phone No" required="required">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="Price">Price* : </label>
+            <div class="col-sm-6">
+                <input id="price" type="text" class="form-control" name="adprice" placeholder="Amount in Rs." required="required">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="address">Address* : </label>
+            <div class="col-sm-6">
+                <input id="address" type="text" class="form-control" name="address" placeholder="Enter Address" required="required">
+            </div>
+        </div>
+        <!--Category View-->
+        <div class="mydropdown">
+            <label><b>City*: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</b></label>
+            <select name="City" id="cityId" required="required">
+                <option value="0">Select City</option>
+                <option value="Lahore">Lahore</option>
+                <option value="Karachi">Karachi</option>
+                <option value="Faisalabad">Faisalabad</option>
+                <option value="Rawalpindi">Rawalpindi</option>
+                <option value="Islamabad">Islamabad</option>
+                <option value="Sialkot">Sialkot</option>
+                <option value="Gujrat">Gujrat</option>
+                <option value="Multan">Multan</option>
+                <option value="Burewala">Burewala</option>
+                <option value="BahawalPur">Bahawalpur</option>
+            </select>
+        </div>
+        <!-- End Category View -->
+        <br />
+        <div class="form-group">
+            <label for="uploadImg" class="col-sm-2 control-label">Upload Image: </label>
+            <div class="col-sm-6">
+                <input type="file" name="file" required="required">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <br />
+                <div class="checkbox-inline">
+                    <label>
+                        <input type="checkbox" required="required"><h4>By Clicking Submit you agree with Rules and Regulations</h4>
+                    </label>
+                </div>
+                <br />
+                <br />
+                <input id="submit" type="submit" value="Submit Ad" />
+                <a href="~/Home/Index" class="btn btn-info" role="button">Cancel</a>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

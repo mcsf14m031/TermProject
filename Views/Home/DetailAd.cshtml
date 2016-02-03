@@ -1,0 +1,100 @@
+﻿@model TermProject.Models.AdItem
+
+@{
+  
+    if(((TermProject.Models.user)Session["user"] != null))
+    {
+        Layout = "~/Views/Shared/UserIndex.cshtml";
+        ViewBag.Title = "LAM";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+        ViewBag.Title = "LAM";
+    }
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.js" type="text/javascript"></script>
+    @*<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>*@
+    <script src="~/Scripts/jquery.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <title>DetailAd</title>
+    <style>
+        html, body {
+            background-image: url('/Images/1.jpg');
+        }
+
+        .well {
+            color: chocolate;
+            background-image: url('/Images/background.jpg');
+            height: auto;
+            border-left: hidden;
+            border-right: hidden;
+            margin-top: 1%;
+            margin-left: 10%;
+            margin-right: 10%;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            text-align: end;
+        }
+    </style>
+</head>
+<body>
+    <div class="myAds" style="color: #0000FF">
+        <div class="well">
+            <div class="container">
+                <div class="row" style="width:100%">
+                    <div class="col-sm-4">
+                        <img src ="/DbImages/@Model.image1" style="width:330px; height:330px" class="img-responsive" />
+                    </div>
+                    <div class="col-sm-8">
+                        <h1>@Model.AdTitle&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Price:Rs @Model.Price</h1>
+                        <h4><b>@Model.Name</b></h4>
+                        <h4>@Model.Address</h4>
+                        <footer>
+                            <h5 style="width:300px; height:170px">Description: @Model.Description</h5>
+                            <h4 style="bottom: auto">Phone:&nbsp&nbsp @Model.Phone </h4>
+                            <h5>@Model.DateTime</h5>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    @if (((TermProject.Models.user)Session["user"] != null))
+    {
+        <h2 style="margin-left:10%">Post Your Comments Here</h2>
+        @Html.Action("listPostComments", "AD", new { postId = @Model.Id })
+    }
+    else
+    {
+        <h3 style="margin-left:10%">To Post or See Comments Please <a href="~/Account/Login">Login here</a></h3>
+    }
+    @*@Ajax.ActionLink("Comment", "getPostComments", new AjaxOptions() { 
+                                                    HttpMethod = "Get",
+                                                    UpdateTargetId = "divComments",
+                                                    InsertionMode = InsertionMode.Replace                                                
+                                                })
+
+    <div id="divComments"></div>*@
+</body>
+</html>

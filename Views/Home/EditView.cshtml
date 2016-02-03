@@ -1,0 +1,59 @@
+﻿@model TermProject.Models.user
+
+@{
+    ViewBag.Title = "LAM";    
+    Layout = "~/Views/Shared/User.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+        <title>@ViewBag.title</title>
+        <meta name="viewport" content="width=device-width" />
+        <link href="~/Content/bootstrap-responsive.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap-responsive.min.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <script src="~/Scripts/bootstrap.js"></script>
+        <script src="~/Scripts/jquery-1.10.2.intellisense.js"></script>
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+   <style>
+       html, body {
+                background-image: url('/Images/1.jpg');
+            }
+   </style>
+</head>
+<body>
+        <h2 style="margin-left:17%"> <b> Edit Profile </b></h2>
+        <form class="form-horizontal" action="/Home/UpdateView/@Model.Id" method="post">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="fname">First Name:</label>
+                <div class="col-sm-6">
+                    <input id="fname" type="text" class="form-control" name="fname" value="@Model.fname">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="lname">Last Name:</label>
+                <div class="col-sm-6">
+                    <input id="lname" type="text" class="form-control" name="lname" value="@Model.lname">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="email">Email:</label>
+                <div class="col-sm-6">
+                    <input id="email" type="email" class="form-control" name="email" value="@Model.email">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="email">Address:</label>
+                <div class="col-sm-6">
+                    <input id="address" type="text" class="form-control" name="address" value="@Model.Address">
+                </div>
+            </div>
+                <input style="margin-left:17%" type="submit" value="submit" />
+                <a href="/Home/FirstView/@Model.Id" class="btn btn-info" role="button">Cancel</a>
+            </form>
+</body>
+</html>

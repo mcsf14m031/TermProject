@@ -1,0 +1,43 @@
+﻿@model List<TermProject.Models.Comment>
+
+@if(Model.Count()==0)
+{
+    <h1>No Comments Yet.</h1>
+}
+else
+{
+    foreach (var item in Model)
+    {        
+    <div class="form-group">
+        <div class="col-md-1 col-md-offset-2">
+            <img src ="/DbImages/@item.UImage" style="display:inline-block; width:50px; height:50px ; margin-top:20px" class="img-circle" />
+            </div>
+        <div class="col-md-9">
+            <h3 style="color:blue">@item.Name</h3>
+            @Html.LabelForModel(item.CommentDes)
+            @*<input disabled="disabled" class="form-control" value="@item.CommentDes" />*@
+            <h6>@item.DateTime</h6>
+        </div>
+    </div>
+        @*<div class="col-sm-12">
+            <h3 style="margin-left: 20%">@item.Name</h3>
+            <h3 style="margin-left: 30%; border:solid; width:500px">@item.CommentDes</h3>
+            <h6 style="margin-left: 20%">@item.DateTime</h6>
+        </div>*@
+    }
+}
+
+<form class="form-horizontal" role="form" method="post" action="/AD/postComments">
+    <div class="form-group">
+        <label class="control-label col-sm-2" style="margin-left:8%" for="comments">Your Comment:</label>
+        <div class="col-sm-6">
+            <input type="text" required="required" class="form-control" name="comment" placeholder="post your Comments here. ">
+            <input type="hidden" class="form-control" name="postId" value="@ViewBag.postId">   
+        </div>
+        @*<div class="form-group">
+            <div style="margin-left:20%" class="col-sm-offset-2 col-sm-10">
+                <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>*@
+    </div>
+</form>

@@ -1,0 +1,84 @@
+﻿@model TermProject.Models.user
+
+@{
+    Layout = "~/Views/Shared/User.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+        <title>@ViewBag.title</title>
+        <meta name="viewport" content="width=device-width" />
+        <link href="~/Content/bootstrap-responsive.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap-responsive.min.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <script src="~/Scripts/bootstrap.js"></script>
+        <script src="~/Scripts/jquery-1.10.2.intellisense.js"></script>
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+   <style>
+       html, body {
+                background-image: url('/Images/1.jpg');
+            }
+   </style>
+</head>
+<body>
+
+    <div>
+        <center><h2 style="color:darkmagenta">Your Profile Information</h2></center>
+        <div class="container">
+            <div class="col-sm-4">
+                <table class="table" style="margin-left:150%">
+                    <tbody>
+
+                        <tr class="info">
+                            <th>First Name
+                            </th>
+                            <td>
+                                @Model.fname
+                            </td>
+                        </tr>
+                        <tr class="info">
+                            <th>Last Name 
+                            </th>
+                            <td>
+                                @Model.lname
+                            </td>
+                        </tr>
+
+                        <tr class="info">
+                            <th>Your Email 
+                            </th>
+                            <td>
+                                @Model.email
+                            </td>
+                        </tr>
+
+                        <tr class="info">
+                            <th>Address
+                            </th>
+                            <td>
+                                @Model.Address
+                            </td>
+                        </tr>
+                        <tr class="info">
+                            <th>Gender
+                            </th>
+                            <td>
+                                @Model.Gender
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button id="submit" type="submit" class="btn btn-primary">Edit Profile</button>
+                                @*Edit Info*@
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

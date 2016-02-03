@@ -1,0 +1,39 @@
+﻿@{
+  
+    if(((TermProject.Models.user)Session["user"] != null))
+    {
+        Layout = "~/Views/Shared/UserIndex.cshtml";
+        ViewBag.Title = "LAM";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+        ViewBag.Title = "LAM";
+    }
+}
+
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <script src="~/Scripts/bootstrap.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+        <title>Contact</title>
+        <style>
+            html, body {
+                background-image: url('/Images/1.jpg');
+            }
+            .myClass {
+                    margin-top:10%;
+                }
+        </style>
+    </head>
+    <body>
+    </body>
+</html>

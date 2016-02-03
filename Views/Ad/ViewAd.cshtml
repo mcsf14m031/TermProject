@@ -1,0 +1,81 @@
+﻿@model IEnumerable<TermProject.Models.AdItem>
+
+@{
+    ViewBag.Title = "LAM";    
+}
+<html>
+    <head>
+
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Scripts/bootstrap.js"></script>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="~/Scripts/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+        <style>
+        html, body {
+            background-image: url('/Images/1.jpg');
+        }
+            .well {
+                color:chocolate;
+                background-image: url('/Images/Gray.jpg');
+                height: auto;
+                border-left: hidden;
+                border-right: hidden;
+                margin-top: 1%;
+                margin-left: 10%;
+                margin-right: 10%;
+            }
+
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div class="myAds" style="color: #0000FF">
+        <div class="well">
+            <center><h2 style="color:InfoBackground">Your Ads</h2></center>
+            <hr />
+            @if (Model.Count() == 0)
+            {
+                <center><h3 style="color:InfoBackground">You Have Not Posted Any Ad yet <a href="~/Ad/postAd">Click Here to Post an Ad</a></h3></center> 
+            }
+            else
+            {
+                foreach (var s in Model)
+                {
+                <hr />
+                <a href="~/Home/DetailAd/@s.Id" style="color:chocolate">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <img class="img-responsive" src ="/DbImages/@s.image1" style="height:250px";"width=270px"/>
+                            </div>
+                            <div class="col-sm-5">
+                                <h1>@s.AdTitle</h1>
+                                <h4>@s.Address</h4>
+                                <h4>@s.Name</h4>
+                                <br />
+                                <h4>Price:&nbsp&nbsp @s.Price &nbsp&nbsp&nbsp Phone:&nbsp&nbsp @s.Phone</h4>
+                                <h5>@s.DateTime</h5>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                
+                    <a style="margin-left:75%" href="~/AD/EditAd/@s.Id" class="btn btn-info" role="button">Edit Ad</a>
+                    <a href="~/AD/DeleteAd/@s.Id" class="btn btn-warning" role="button">Delete Ad</a>
+                    @*<input id="submit" type="submit" value="Edit Ad" />
+                    <input id="submitt" type="submit" value="Delete Ad" />*@
+                }
+            }
+        </div>
+    </div>
+    </body>
+</html>
